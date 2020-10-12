@@ -1,14 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "mobx-react";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import CounterStore from "./Stores/counter/Counter";
+import MarketStore from "./Stores/market/market";
+
+const counter = new CounterStore();
+const market = new MarketStore();
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider counter={counter} market={market}>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </Provider>,
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
